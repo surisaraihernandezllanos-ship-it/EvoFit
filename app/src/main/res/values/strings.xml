@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Evo Fit</string>
+    <string name="ejercicios_titulo">Ejercicios</string>
+    <string name="buscar_ejercicio_hint">Buscar ejercicio&#8230;</string>
+    <string name="ejercicio_pecho">Ejercicios de Pecho</string>
+    <string name="ejercicio_espalda">Ejercicios de Espalda</string>
+    <string name="ejercicio_pierna">Ejercicios de Pierna</string>
+    <string name="ejercicio_brazo">Ejercicios de Brazo</string>
+    <string name="ejercicio_abdomen">Ejercicios de Abdomen</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="rutinas_titulo">Rutinas</string>
+    <string name="personalizar_rutina">Personalizar Rutina</string>
+    <string name="perfil_titulo">Mi Perfil</string>
+    <string name="perfil_estado">Estado: Activo</string>
+    <string name="perfil_membresia">Membresía: EvoFit Premium</string>
+    <string name="default_user">usuario@evofit.com</string>
+</resources>

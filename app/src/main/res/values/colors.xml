@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Tema Oscuro -->
+    <color name="dark_bg">#121212</color>
+    <color name="dark_panel">#1E1E1E</color>
+    <color name="dark_accent">#03DAC5</color>
+    <color name="dark_text">#FFFFFF</color>
+
+    <!-- Paleta Tema Claro -->
+    <color name="light_bg">#F5F5F5</color>
+    <color name="light_panel">#FFFFFF</color>
+    <color name="light_accent">#6200EE</color>
+    <color name="light_text">#121212</color>
+
+    <!-- Paleta Tema Degradado / Cósmico -->
+    <color name="grad_bg">#0F2027</color>
+    <color name="grad_panel">#203A43</color>
+    <color name="grad_accent">#2C5364</color>
+    <color name="grad_text">#00E676</color>
+</resources>

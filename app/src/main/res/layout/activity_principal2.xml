@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#0B0E14">
+
+    <!-- BARRA SUPERIOR ELEVADA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#161B22"
+        android:layout_marginBottom="24dp">
+
+        <!-- Botón de las 3 rayas -->
+        <TextView
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☰"
+            android:textSize="26sp"
+            android:textColor="#F0F6FC"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Logo / Marca -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="EVOFIT"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="#60EFFF"/>
+
+        <!-- Foto de Perfil -->
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Perfil"/>
+    </LinearLayout>
+
+    <!-- CABECERA BIENVENIDA -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hola, Atleta 🔥"
+        android:textSize="14sp"
+        android:textColor="#8B949E"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Qué entrenamos hoy?"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#F0F6FC"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- BUSCADOR -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="🔍 Buscar rutinas, ejercicios..."
+        android:textColor="#F0F6FC"
+        android:textColorHint="#8B949E"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textSize="15sp"
+        android:background="#161B22"
+        android:layout_marginBottom="28dp"/>
+
+    <!-- SECCIÓN ACCIONES -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Módulos de Entrenamiento"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#F0F6FC"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- TARJETAS RUTINAS Y EJERCICIOS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Tarjeta Rutinas -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="#161B22">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏋️‍♂️"
+                android:textSize="28sp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnIrRutinas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rutinas"
+                android:textStyle="bold"
+                android:textColor="#0B0E14"
+                android:backgroundTint="#00FF87"/>
+        </LinearLayout>
+
+        <!-- Tarjeta Ejercicios -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:background="#161B22">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💪"
+                android:textSize="28sp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnIrEjercicios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejercicios"
+                android:textStyle="bold"
+                android:textColor="#0B0E14"
+                android:backgroundTint="#60EFFF"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
