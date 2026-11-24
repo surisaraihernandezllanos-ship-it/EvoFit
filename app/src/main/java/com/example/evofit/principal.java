@@ -2,103 +2,117 @@ package com.example.evofit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class principal extends AppCompatActivity {
+public class principal extends BaseActivity {
 
-    private Button btnIrRutinas, btnIrEjercicios;
-    private TextView btnMenu;
-    private ImageView imgPerfil;
-    private EditText etSearch;
-    private LinearLayout layoutMain;
-    private String usuarioActual = "";
+    private TextView tvRutinasCompletadas;
+    private TextView tvDiasSemanasProgreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_principal2);
 
-        if (getIntent().hasExtra("USER_EMAIL")) {
-            usuarioActual = getIntent().getStringExtra("USER_EMAIL");
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
         }
 
-        layoutMain = findViewById(R.id.main);
-        btnIrRutinas = findViewById(R.id.btnIrRutinas);
-        btnIrEjercicios = findViewById(R.id.btnIrEjercicios);
-        btnMenu = findViewById(R.id.btnMenu);
-        imgPerfil = findViewById(R.id.imgPerfil);
-        etSearch = findViewById(R.id.etSearch);
+        TextView tvSaludo = findViewById(R.id.tvSaludo);
+        tvRutinasCompletadas = findViewById(R.id.tvRutinasCompletadas);
+        tvDiasSemanasProgreso = findViewById(R.id.tvDiasSemanasProgreso);
 
-        btnIrRutinas.setOnClickListener(v -> {
-            startActivity(new Intent(principal.this, rutinas.class));
-        });
+        Button btnRutinas = findViewById(R.id.btnRutinas);
+        Button btnEjercicios = findViewById(R.id.btnEjercicios);
+        ImageView btnMenu = findViewById(R.id.btnMenu);
+        ImageView btnPerfil = findViewById(R.id.btnPerfil);
 
-        btnIrEjercicios.setOnClickListener(v -> {
-            startActivity(new Intent(principal.this, ejercicios.class));
-        });
+        String correoUsuario = getIntent().getStringExtra("CORREO_USUARIO");
+        SharedPreferences prefs = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
+        String nombreGuardado = prefs.getString("USUARIO_NOMBRE", "");
 
-        // Menú desplegable de las 3 rayas (☰)
-        btnMenu.setOnClickListener(v -> {
-            PopupMenu popupMenu = new PopupMenu(principal.this, btnMenu);
-            popupMenu.getMenuInflater().inflate(R.menu.menu_opciones, popupMenu.getMenu());
+        if (tvSaludo != null) {
+            if (!nombreGuardado.isEmpty()) {
+                tvSaludo.setText("Hola, " + nombreGuardado + " 🔥");
+            } else if (correoUsuario != null && !correoUsuario.isEmpty()) {
+                tvSaludo.setText("Hola, " + correoUsuario + " 🔥");
+            }
+        }
 
-            popupMenu.setOnMenuItemClickListener(item -> {
-                int id = item.getItemId();
+        if (btnRutinas != null) {
+            btnRutinas.setOnClickListener(v ->
+                    startActivity(new Intent(principal.this, rutinas.class)));
+        }
 
-                if (id == R.id.nav_ajustes) {
-                    startActivity(new Intent(principal.this, ajustes.class));
-                    return true;
-                } else if (id == R.id.nav_personalizar) {
-                    startActivity(new Intent(principal.this, personalizacion.class));
-                    return true;
-                } else if (id == R.id.nav_salir) {
-                    Intent intent = new Intent(principal.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                return false;
-            });
-            popupMenu.show();
-        });
+        if (btnEjercicios != null) {
+            btnEjercicios.setOnClickListener(v ->
+                    startActivity(new Intent(principal.this, ejercicios.class)));
+        }
 
-        imgPerfil.setOnClickListener(v -> abrirPerfil());
+        if (btnPerfil != null) {
+            btnPerfil.setOnClickListener(v ->
+                    startActivity(new Intent(principal.this, perfil.class)));
+        }
+
+        if (btnMenu != null) {
+            btnMenu.setOnClickListener(this::mostrarPopupMenu);
+        }
+
+        actualizarResumenProgreso();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        aplicarTemaGlobal();
+        actualizarResumenProgreso();
     }
 
-    private void aplicarTemaGlobal() {
-        SharedPreferences preferences = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
-        String tema = preferences.getString("TEMA_ACTUAL", "OSCURO");
+    private void mostrarPopupMenu(View anchor) {
+        PopupMenu popup = new PopupMenu(this, anchor);
+        popup.getMenu().add("Mi Perfil");
+        popup.getMenu().add("Ajustes");
+        popup.getMenu().add("Personalización de Tema");
 
-        if (layoutMain != null) {
-            if (tema.equals("CLARO")) {
-                layoutMain.setBackgroundColor(Color.parseColor("#F5F7FA"));
-            } else if (tema.equals("DEGRADADO")) {
-                layoutMain.setBackgroundResource(R.drawable.degradado);
-            } else { // OSCURO CYBER
-                layoutMain.setBackgroundColor(Color.parseColor("#0B0E14"));
+        popup.setOnMenuItemClickListener((MenuItem item) -> {
+            String titulo = item.getTitle().toString();
+            if ("Mi Perfil".equals(titulo)) {
+                startActivity(new Intent(principal.this, perfil.class));
+            } else if ("Ajustes".equals(titulo)) {
+                startActivity(new Intent(principal.this, ajustes.class));
+            } else if ("Personalización de Tema".equals(titulo)) {
+                startActivity(new Intent(principal.this, personalizacion.class));
             }
-        }
+            return true;
+        });
+        popup.show();
     }
 
-    private void abrirPerfil() {
-        Intent intent = new Intent(principal.this, perfil.class);
-        intent.putExtra("USER_EMAIL", usuarioActual);
-        startActivity(intent);
+    private void actualizarResumenProgreso() {
+        if (tvRutinasCompletadas == null || tvDiasSemanasProgreso == null) return;
+
+        SharedPreferences prefs = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
+        int rutinasRealizadas = prefs.getInt("RUTINAS_REALIZADAS", 0);
+        int diasCompletados = prefs.getInt("DIAS_COMPLETADOS", 0);
+        int semanasCompletadas = diasCompletados / 7;
+
+        tvRutinasCompletadas.setText("Rutinas realizadas: " + rutinasRealizadas);
+        tvDiasSemanasProgreso.setText("Días completados: " + diasCompletados + " | Semanas: " + semanasCompletadas);
     }
 }

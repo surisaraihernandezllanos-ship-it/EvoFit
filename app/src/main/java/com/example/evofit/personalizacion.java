@@ -1,93 +1,63 @@
 package com.example.evofit;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class personalizacion extends AppCompatActivity {
-
-    private RadioGroup rgTemas;
-    private RadioButton rbOscuro, rbClaro, rbDegradado;
-    private Button btnAplicarTema;
-    private LinearLayout layoutPersonalizacion;
-    private TextView tvTitulo;
-    private SharedPreferences preferences;
+public class personalizacion extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_personalizacion);
 
-        preferences = getSharedPreferences("EvoFitPrefs", Context.MODE_PRIVATE);
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
+        }
 
-        layoutPersonalizacion = findViewById(R.id.layoutPersonalizacion);
-        tvTitulo = findViewById(R.id.tvTitulo);
-        rgTemas = findViewById(R.id.rgTemas);
-        rbOscuro = findViewById(R.id.rbOscuro);
-        rbClaro = findViewById(R.id.rbClaro);
-        rbDegradado = findViewById(R.id.rbDegradado);
-        btnAplicarTema = findViewById(R.id.btnAplicarTema);
+        RadioButton rbOscuro = findViewById(R.id.rbModoOscuro);
+        RadioButton rbClaro = findViewById(R.id.rbModoClaro);
+        RadioButton rbDegradado = findViewById(R.id.rbModoDegradado);
+        Button btnGuardarTema = findViewById(R.id.btnGuardarTema);
 
-        String temaActual = preferences.getString("TEMA_ACTUAL", "OSCURO");
-        if (temaActual.equals("CLARO")) {
+        SharedPreferences prefs = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
+        String temaActual = prefs.getString("TEMA_ACTUAL", "OSCURO");
+
+        if ("CLARO".equals(temaActual) && rbClaro != null) {
             rbClaro.setChecked(true);
-        } else if (temaActual.equals("DEGRADADO")) {
+        } else if ("DEGRADADO".equals(temaActual) && rbDegradado != null) {
             rbDegradado.setChecked(true);
-        } else {
+        } else if (rbOscuro != null) {
             rbOscuro.setChecked(true);
         }
 
-        aplicarPaletaVista(temaActual);
+        if (btnGuardarTema != null) {
+            btnGuardarTema.setOnClickListener(v -> {
+                String seleccionado = "OSCURO";
+                if (rbClaro != null && rbClaro.isChecked()) {
+                    seleccionado = "CLARO";
+                } else if (rbDegradado != null && rbDegradado.isChecked()) {
+                    seleccionado = "DEGRADADO";
+                }
 
-        btnAplicarTema.setOnClickListener(v -> {
-            String nuevoTema = "OSCURO";
-            int selectedId = rgTemas.getCheckedRadioButtonId();
-
-            if (selectedId == R.id.rbClaro) {
-                nuevoTema = "CLARO";
-            } else if (selectedId == R.id.rbDegradado) {
-                nuevoTema = "DEGRADADO";
-            }
-
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("TEMA_ACTUAL", nuevoTema);
-            editor.apply();
-
-            Toast.makeText(this, "Tema aplicado correctamente", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(this, principal.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        });
-    }
-
-    private void aplicarPaletaVista(String tema) {
-        if (tema.equals("CLARO")) {
-            layoutPersonalizacion.setBackgroundColor(Color.parseColor("#F5F7FA"));
-            tvTitulo.setTextColor(Color.parseColor("#7000FF"));
-            btnAplicarTema.setBackgroundColor(Color.parseColor("#7000FF"));
-            btnAplicarTema.setTextColor(Color.parseColor("#FFFFFF"));
-        } else if (tema.equals("DEGRADADO")) {
-            layoutPersonalizacion.setBackgroundResource(R.drawable.degradado);
-            tvTitulo.setTextColor(Color.parseColor("#00FF87"));
-            btnAplicarTema.setBackgroundColor(Color.parseColor("#00FF87"));
-            btnAplicarTema.setTextColor(Color.parseColor("#0B0E14"));
-        } else { // OSCURO CYBER
-            layoutPersonalizacion.setBackgroundColor(Color.parseColor("#0B0E14"));
-            tvTitulo.setTextColor(Color.parseColor("#60EFFF"));
-            btnAplicarTema.setBackgroundColor(Color.parseColor("#00FF87"));
-            btnAplicarTema.setTextColor(Color.parseColor("#0B0E14"));
+                prefs.edit().putString("TEMA_ACTUAL", seleccionado).apply();
+                Toast.makeText(this, "Tema aplicado", Toast.LENGTH_SHORT).show();
+                recreate();
+            });
         }
     }
 }

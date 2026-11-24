@@ -1,67 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#0B0E14"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="#0B0E14">
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <!-- LOGO O TÍTULO -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="EVOFIT"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.15"
-        android:textColor="#60EFFF"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="#50E6F2"
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="32dp"
         android:text="Tu plataforma de entrenamiento inteligente"
-        android:textSize="14sp"
-        android:textColor="#8B949E"
-        android:layout_marginBottom="40dp"/>
+        android:textColor="#A0A5B0"
+        android:textSize="14sp" />
 
-    <!-- CAMPO USUARIO -->
     <EditText
-        android:id="@+id/etUser"
+        android:id="@+id/etUsuario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:background="#171D27"
         android:hint="Correo o Usuario"
-        android:textColor="#F0F6FC"
-        android:textColorHint="#8B949E"
         android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="16dp"/>
+        android:minHeight="48dp"
+        android:paddingHorizontal="14dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A0A5B0" />
 
-    <!-- CAMPO CONTRASEÑA -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="14dp"
+        android:background="#171D27"
         android:hint="Contraseña"
-        android:textColor="#F0F6FC"
-        android:textColorHint="#8B949E"
         android:inputType="textPassword"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="28dp"/>
+        android:minHeight="48dp"
+        android:paddingHorizontal="14dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A0A5B0" />
 
-    <!-- BOTÓN REGISTRO / ACCESO -->
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnComenzar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#00E88F"
+        android:minHeight="48dp"
         android:text="Comenzar"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:textColor="#0B0E14"
-        android:backgroundTint="#00FF87"
-        android:padding="14dp"/>
+        android:textStyle="bold" />
 
 </LinearLayout>

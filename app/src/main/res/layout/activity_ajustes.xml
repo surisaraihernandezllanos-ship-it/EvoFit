@@ -1,167 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#0B0E14">
+    android:background="#0B0E14"
+    android:fillViewport="true">
 
-    <!-- TÍTULO -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ajustes de la App ⚙️"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#60EFFF"
-        android:layout_marginBottom="4dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Configura tus preferencias de EvoFit"
-        android:textSize="14sp"
-        android:textColor="#8B949E"
-        android:layout_marginBottom="24dp"/>
-
-    <!-- OPCIÓN 1: NOTIFICACIONES -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="12dp">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajustes de la App ⚙️"
+            android:textColor="#50E6F2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Configura tus preferencias de EvoFit"
+            android:textColor="#A0A5B0"
+            android:textSize="14sp" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp"
+            android:background="#171D27"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Notificaciones de Entrenamiento"
-                android:textColor="#F0F6FC"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Notificaciones de Entrenamiento"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Recordatorios para no perder tu rutina"
+                    android:textColor="#A0A5B0"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swNotificaciones"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recordatorios para no perder tu rutina"
-                android:textColor="#8B949E"
-                android:textSize="12sp"/>
+                android:layout_height="48dp"
+                android:minHeight="48dp" />
         </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchNotificaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"/>
-    </LinearLayout>
-
-    <!-- OPCIÓN 2: RECORDATORIO DE AGUA -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="12dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="12dp"
+            android:background="#171D27"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Alerta de Hidratación"
-                android:textColor="#F0F6FC"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alerta de Hidratación"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Recordatorio de agua entre series"
+                    android:textColor="#A0A5B0"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swHidratacion"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recordatorio de agua entre series"
-                android:textColor="#8B949E"
-                android:textSize="12sp"/>
+                android:layout_height="48dp"
+                android:minHeight="48dp" />
         </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchHidratacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"/>
-    </LinearLayout>
-
-    <!-- OPCIÓN 3: SONIDO Y VIBRACIÓN -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="28dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="12dp"
+            android:background="#171D27"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Efectos de Sonido"
-                android:textColor="#F0F6FC"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Efectos de Sonido"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sonido al terminar descansos o series"
+                    android:textColor="#A0A5B0"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swSonido"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sonido al terminar descansos o series"
-                android:textColor="#8B949E"
-                android:textSize="12sp"/>
+                android:layout_height="48dp"
+                android:minHeight="48dp" />
         </LinearLayout>
 
-        <Switch
-            android:id="@+id/switchSonido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"/>
+        <Button
+            android:id="@+id/btnLimpiarCache"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#00E88F"
+            android:minHeight="48dp"
+            android:text="Limpiar Caché de la App"
+            android:textColor="#0B0E14"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnVolverDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#171D27"
+            android:minHeight="48dp"
+            android:text="Volver"
+            android:textColor="#FFFFFF" />
+
     </LinearLayout>
-
-    <!-- BOTÓN LIMPIAR CACHÉ -->
-    <Button
-        android:id="@+id/btnLimpiarCache"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Limpiar Caché de la App"
-        android:textColor="#0B0E14"
-        android:backgroundTint="#00FF87"
-        android:textStyle="bold"
-        android:padding="14dp"
-        android:layout_marginBottom="12dp"/>
-
-    <!-- BOTÓN REGRESAR -->
-    <Button
-        android:id="@+id/btnVolverAjustes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver al Dashboard"
-        android:textColor="#F0F6FC"
-        android:backgroundTint="#161B22"
-        android:padding="14dp"/>
-
-</LinearLayout>
+</ScrollView>

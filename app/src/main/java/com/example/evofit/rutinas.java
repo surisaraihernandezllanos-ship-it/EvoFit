@@ -1,47 +1,64 @@
 package com.example.evofit;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class rutinas extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_rutinas);
 
-        Button btnCompletar1 = findViewById(R.id.btnCompletar1);
-        Button btnCompletar2 = findViewById(R.id.btnCompletar2);
-        Button btnTerminarRutina = findViewById(R.id.btnTerminarRutina);
-
-        // Interacción para el ejercicio 1
-        if (btnCompletar1 != null) {
-            btnCompletar1.setOnClickListener(v -> {
-                btnCompletar1.setText("¡Completado! 🔥");
-                btnCompletar1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#8B949E")));
-                Toast.makeText(this, "¡Buen trabajo en la serie!", Toast.LENGTH_SHORT).show();
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
             });
         }
 
-        // Interacción para el ejercicio 2
-        if (btnCompletar2 != null) {
-            btnCompletar2.setOnClickListener(v -> {
-                btnCompletar2.setText("¡Completado! 🔥");
-                btnCompletar2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#8B949E")));
-                Toast.makeText(this, "¡Excelente esfuerzo!", Toast.LENGTH_SHORT).show();
+        Button btnMarcar1 = findViewById(R.id.btnMarcar1);
+        Button btnMarcar2 = findViewById(R.id.btnMarcar2);
+        Button btnFinalizar = findViewById(R.id.btnFinalizarEntrenamiento);
+
+        if (btnMarcar1 != null) {
+            btnMarcar1.setOnClickListener(v -> {
+                btnMarcar1.setText("¡Completado! 🔥");
+                btnMarcar1.setEnabled(false);
             });
         }
 
-        // Botón para finalizar toda la sesión
-        if (btnTerminarRutina != null) {
-            btnTerminarRutina.setOnClickListener(v -> {
-                Toast.makeText(this, "¡Entrenamiento guardado con éxito! 💪", Toast.LENGTH_LONG).show();
-                finish(); // Cierra la pantalla y regresa al dashboard principal
+        if (btnMarcar2 != null) {
+            btnMarcar2.setOnClickListener(v -> {
+                btnMarcar2.setText("¡Completado! 🔥");
+                btnMarcar2.setEnabled(false);
+            });
+        }
+
+        if (btnFinalizar != null) {
+            btnFinalizar.setOnClickListener(v -> {
+                SharedPreferences prefs = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
+                int rutinasActuales = prefs.getInt("RUTINAS_REALIZADAS", 0);
+                int diasActuales = prefs.getInt("DIAS_COMPLETADOS", 0);
+
+                prefs.edit()
+                        .putInt("RUTINAS_REALIZADAS", rutinasActuales + 1)
+                        .putInt("DIAS_COMPLETADOS", diasActuales + 1)
+                        .apply();
+
+                Toast.makeText(this, "¡Entrenamiento guardado con éxito! 💪", Toast.LENGTH_SHORT).show();
+                finish();
             });
         }
     }

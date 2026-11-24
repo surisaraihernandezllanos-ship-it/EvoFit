@@ -1,126 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#0B0E14">
+    android:background="#0B0E14"
+    android:fillViewport="true">
 
-    <!-- TÍTULO DE LA PANTALLA -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Biblioteca de Ejercicios 📚"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#60EFFF"
-        android:layout_marginBottom="4dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Selecciona un ejercicio para ver detalles"
-        android:textSize="14sp"
-        android:textColor="#8B949E"
-        android:layout_marginBottom="20dp"/>
-
-    <!-- TARJETA EJERCICIO 1 -->
     <LinearLayout
-        android:id="@+id/cardEjercicio1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="14dp"
-        android:clickable="true"
-        android:focusable="true">
+        android:padding="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🏋️‍♂️ Sentadilla Libre con Barra"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="#F0F6FC"
-            android:layout_marginBottom="4dp"/>
+            android:text="Biblioteca de Ejercicios 📚"
+            android:textColor="#50E6F2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Grupo Muscular: Piernas / Cuádriceps"
-            android:textSize="13sp"
-            android:textColor="#00FF87"/>
+            android:layout_marginTop="4dp"
+            android:text="Selecciona un ejercicio para ver video e instrucciones"
+            android:textColor="#A0A5B0"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/cardSentadilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#171D27"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="48dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🏋️ Sentadilla Libre con Barra"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Grupo Muscular: Piernas / Cuádriceps • Ver video ▶"
+                android:textColor="#00E88F"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardPressMilitar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#171D27"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="48dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💪 Press Militar de Hombros"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Grupo Muscular: Hombros / Deltoides • Ver video ▶"
+                android:textColor="#00E88F"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardPesoMuerto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#171D27"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="48dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔥 Peso Muerto Rumano"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Grupo Muscular: Isquiotibiales / Espalda Baja • Ver video ▶"
+                android:textColor="#00E88F"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRegresarDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
+            android:backgroundTint="#50E6F2"
+            android:minHeight="48dp"
+            android:text="Regresar al Dashboard"
+            android:textColor="#0B0E14"
+            android:textStyle="bold" />
+
     </LinearLayout>
-
-    <!-- TARJETA EJERCICIO 2 -->
-    <LinearLayout
-        android:id="@+id/cardEjercicio2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="14dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="💪 Press Militar de Hombros"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="#F0F6FC"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grupo Muscular: Hombros / Deltoides"
-            android:textSize="13sp"
-            android:textColor="#00FF87"/>
-    </LinearLayout>
-
-    <!-- TARJETA EJERCICIO 3 -->
-    <LinearLayout
-        android:id="@+id/cardEjercicio3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#161B22"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🔥 Peso Muerto Rumano"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="#F0F6FC"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grupo Muscular: Isquiotibiales / Espalda Baja"
-            android:textSize="13sp"
-            android:textColor="#00FF87"/>
-    </LinearLayout>
-
-    <!-- BOTÓN VOLVER -->
-    <Button
-        android:id="@+id/btnVolverPrincipal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Regresar al Dashboard"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="#0B0E14"
-        android:backgroundTint="#60EFFF"
-        android:padding="14dp"/>
-
-</LinearLayout>
+</ScrollView>

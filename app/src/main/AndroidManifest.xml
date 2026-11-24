@@ -48,6 +48,15 @@
             android:name=".ajustes"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".DetalleEjercicio"
+            android:exported="false"
+            android:theme="@style/Theme.EvoFit"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".detalleEjercicio"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
