@@ -30,16 +30,13 @@ public class personalizacion extends BaseActivity {
         }
 
         RadioButton rbOscuro = findViewById(R.id.rbModoOscuro);
-        RadioButton rbClaro = findViewById(R.id.rbModoClaro);
         RadioButton rbDegradado = findViewById(R.id.rbModoDegradado);
         Button btnGuardarTema = findViewById(R.id.btnGuardarTema);
 
         SharedPreferences prefs = getSharedPreferences("EvoFitPrefs", MODE_PRIVATE);
         String temaActual = prefs.getString("TEMA_ACTUAL", "OSCURO");
 
-        if ("CLARO".equals(temaActual) && rbClaro != null) {
-            rbClaro.setChecked(true);
-        } else if ("DEGRADADO".equals(temaActual) && rbDegradado != null) {
+        if ("DEGRADADO".equals(temaActual) && rbDegradado != null) {
             rbDegradado.setChecked(true);
         } else if (rbOscuro != null) {
             rbOscuro.setChecked(true);
@@ -48,9 +45,7 @@ public class personalizacion extends BaseActivity {
         if (btnGuardarTema != null) {
             btnGuardarTema.setOnClickListener(v -> {
                 String seleccionado = "OSCURO";
-                if (rbClaro != null && rbClaro.isChecked()) {
-                    seleccionado = "CLARO";
-                } else if (rbDegradado != null && rbDegradado.isChecked()) {
+                 if (rbDegradado != null && rbDegradado.isChecked()) {
                     seleccionado = "DEGRADADO";
                 }
 

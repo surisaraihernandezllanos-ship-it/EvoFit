@@ -47,7 +47,7 @@ public class ejercicios extends BaseActivity {
                         "Sentadilla Libre con Barra",
                         "Piernas / Cuádriceps",
                         "1. Coloca los pies al ancho de los hombros.\n2. Mantén el torso firme y la espalda neutra.\n3. Baja controlando la cadera y sube empujando con los talones.",
-                        R.raw.sentadilla
+                        0
                 )
         );
 
@@ -57,7 +57,7 @@ public class ejercicios extends BaseActivity {
                         "Press Militar de Hombros",
                         "Hombros / Deltoides",
                         "1. Activa el abdomen y glúteos para estabilizar el tronco.\n2. Empuja hacia arriba sin arquear la zona lumbar.\n3. Desciende con control hasta la posición inicial.",
-                        R.raw.press_militar
+                        0
                 )
         );
 
@@ -67,7 +67,7 @@ public class ejercicios extends BaseActivity {
                         "Peso Muerto Rumano",
                         "Isquiotibiales / Espalda Baja",
                         "1. Mantén una ligera flexión de rodillas durante todo el recorrido.\n2. Lleva la cadera atrás sintiendo el estiramiento femoral.\n3. Regresa a la vertical contrayendo glúteos e isquiotibiales.",
-                        R.raw.peso_muerto
+                        0
                 )
         );
 

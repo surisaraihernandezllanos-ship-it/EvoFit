@@ -36,26 +36,26 @@
         <activity
             android:name=".ejercicios"
             android:exported="false" />
+
         <activity
             android:name=".perfil"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".personalizacion"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".ajustes"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".DetalleEjercicio"
-            android:exported="false"
-            android:theme="@style/Theme.EvoFit"
-            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".detalleEjercicio"
             android:exported="false"
+            android:theme="@style/Theme.EvoFit"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

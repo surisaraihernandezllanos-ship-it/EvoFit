@@ -47,15 +47,6 @@
                 android:textColor="#FFFFFF" />
 
             <RadioButton
-                android:id="@+id/rbModoClaro"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:buttonTint="#9060E8"
-                android:minHeight="48dp"
-                android:text="Modo Claro Profesional"
-                android:textColor="#FFFFFF" />
-
-            <RadioButton
                 android:id="@+id/rbModoDegradado"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
